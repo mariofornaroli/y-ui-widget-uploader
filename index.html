@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>UI Upload Widget</title>
+</head>
+<body>
+    <div class="upload-box">
+        <input type="text" value="My_doc.pdf">
+        <i class="far fa-file"></i>
+        <button class="upload">
+            <i class="fas fa-upload"></i>
+            <span>Uploading...</span>
+            <div class="progress"></div>
+        </button>
+        <div class="done-msg">
+            <i class="fas fa-check"></i>
+            <span>Completed</span>
+        </div>
+    </div>
+
+    <script>
+        var uploadBox = document.querySelector('.upload-box');
+        var btnUpload = document.querySelector('.upload');
+
+        btnUpload.addEventListener('click', function() {
+            uploadBox.classList.add('uploading');
+
+            setTimeout(() => {
+                uploadBox.classList.add('done');
+            }, 4500);
+        })
+    </script>
+    
+</body>
+</html>

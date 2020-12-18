@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #dde9ff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-box {
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 10px 80px rgba(48, 82, 126, 0.302);
+}
+
+/* Initial state */
+
+.done-msg,
+button span {
+    display: none;
+}
+
+input {
+    height: 60px;
+    width: 300px;
+    border: none;
+    outline: none;
+    padding: 24px 50px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1.3em;
+}
+
+.upload-box > i {
+    position: absolute;
+    color: #333;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+button {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: #df932a;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: 0.4s;
+}
+
+button:hover {
+    background: #f0a63e;
+}
+
+/* UPLOADING State */
+.uploading button i {
+    display: none;
+}
+
+.uploading button {
+    animation: uploading 1s forwards;
+}
+
+@keyframes uploading {
+    50% {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        right: 0;
+    }
+
+    60% {
+        border-radius: 50px;
+        right: 0;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        right: 0;
+    }
+}
+
+.uploading button span {
+    display: block;
+    transform: translateY(-150px);
+    animation: uploadingMsg 1s forwards;
+    animation-delay: 0.7s;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+}
+
+@keyframes uploadingMsg {
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.uploading .progress {
+    position        : absolute;
+    left            : 0;
+    bottom          : 0;
+    height          : 6px;
+    width           : 0;
+    animation       : uploadingProgress 2.5s forwards ease-in-out;
+    animation-delay : 2s;
+    background-color: #333;
+}
+
+@keyframes uploadingProgress {
+    100% {
+        width: 100%;
+    }
+}
+
+/* DONE state */
+/* DONE state */
+
+.done .done-msg {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 100%;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: #333;
+    font-size       : 1.2em;
+    text-transform  : uppercase;
+    letter-spacing  : 1px;
+    animation       : completedAnimation 1s forwards;
+}
+
+.done-msg i {
+    font-size   : 1.2em;
+    margin-right: 8px;
+}
+
+@keyframes completedAnimation {
+    0% {
+        transform: translateY(150px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
